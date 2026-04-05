@@ -76,24 +76,24 @@
         .top-row {
             display: flex;
             justify-content: center;
-            gap: 90px;
+            gap: 250px;
             margin-bottom: auto;
-            margin-top: 20px;
+            margin-top: 90px;
             flex-wrap: wrap;
         }
         
         .bottom-row {
             display: flex;
             justify-content: center;
-            gap: 90px;
+            gap: 250px;
             margin-top: auto;
-            margin-bottom: 50px;
+            margin-bottom: 80px;
             flex-wrap: wrap;
         }
         
         .field-group {
             text-align: left;
-            width: 190px;
+            width: 250px;
         }
         
         .field-group input {
@@ -108,7 +108,7 @@
         
         .save-bottom {
             text-align: center;
-            margin-top: 5px;
+            margin-top: 50px;
         }
         
         .save-bottom button {
@@ -117,44 +117,81 @@
             padding: 16px 50px;
         }
         
-        /* ПЛАНШЕТЫ И БОЛЬШИЕ ТЕЛЕФОНЫ В ГОРИЗОНТАЛЬНОЙ ОРИЕНТАЦИИ */
+        /* ТЕЛЕФОНЫ И ПЛАНШЕТЫ В ГОРИЗОНТАЛЬНОЙ ОРИЕНТАЦИИ - ТОЧНОЕ СООТВЕТСТВИЕ ПОЗИЦИЯМ */
         @media (max-width: 1200px) and (orientation: landscape) {
+            body {
+                padding: 0;
+                background: #1a1a2e;
+            }
+            .page {
+                max-width: 100%;
+            }
             .city-bg {
                 min-height: 100vh;
-                padding: 40px 40px;
-                justify-content: center;
-                gap: 30px;
+                padding: 0;
+                justify-content: space-between;
+                border-radius: 0;
             }
             .top-row {
-                margin-top: 0px;
-                gap: 30px;
-                margin-bottom: 60px;
+                position: relative;
+                margin-top: 12vh;
+                margin-bottom: 0;
+                gap: 8vw;
+                flex-wrap: nowrap;
             }
             .bottom-row {
-                margin-bottom: 0px;
-                gap: 30px;
-                margin-top: 30px;
+                position: relative;
+                margin-bottom: 10vh;
+                margin-top: 0;
+                gap: 8vw;
+                flex-wrap: nowrap;
             }
             .field-group {
-                width: 150px;
+                width: 18vw;
+                min-width: 120px;
             }
             .field-group input {
-                padding: 10px 8px;
-                font-size: 14px;
+                padding: 1.2vh 0.8vw;
+                font-size: 1.8vh;
             }
             .save-bottom {
-                margin-bottom: -10px;
+                margin-top: 0;
+                margin-bottom: 3vh;
             }
             .save-bottom button {
-                font-size: 16px;
-                padding: 10px 35px;
+                font-size: 2vh;
+                padding: 1.5vh 4vw;
             }
         }
         
-        /* ТЕЛЕФОНЫ В ВЕРТИКАЛЬНОЙ ОРИЕНТАЦИИ */
+        /* ДЛЯ САМЫХ МАЛЕНЬКИХ ТЕЛЕФОНОВ В ЛАНДШАФТЕ */
+        @media (max-width: 800px) and (orientation: landscape) {
+            .top-row {
+                margin-top: 8vh;
+                gap: 6vw;
+            }
+            .bottom-row {
+                margin-bottom: 6vh;
+                gap: 6vw;
+            }
+            .field-group {
+                width: 20vw;
+                min-width: 100px;
+            }
+            .field-group input {
+                padding: 1vh 0.5vw;
+                font-size: 1.6vh;
+            }
+            .save-bottom button {
+                font-size: 1.8vh;
+                padding: 1.2vh 3vw;
+            }
+        }
+        
+        /* ДЛЯ ТЕЛЕФОНОВ В ВЕРТИКАЛЬНОЙ ОРИЕНТАЦИИ - ОСТАЕТСЯ КАК БЫЛО */
         @media (max-width: 900px) and (orientation: portrait) {
             .top-row, .bottom-row {
-                gap: 25px;
+                gap: 50px;
             }
             .field-group {
                 width: 200px;
@@ -175,64 +212,6 @@
             }
             .field-group {
                 width: 250px;
-            }
-        }
-        
-        /* МАЛЕНЬКИЕ ТЕЛЕФОНЫ В ЛАНДШАФТЕ */
-        @media (max-width: 850px) and (orientation: landscape) {
-            .city-bg {
-                min-height: 95vh;
-                padding: 20px 30px;
-            }
-            .top-row {
-                margin-top: -60px;
-                gap: 25px;
-                margin-bottom: 15px;
-            }
-            .bottom-row {
-                margin-bottom: -130px;
-                gap: 25px;
-                margin-top: 15px;
-            }
-            .field-group {
-                width: 150px;
-            }
-            .field-group input {
-                padding: 8px 6px;
-                font-size: 12px;
-            }
-            .save-bottom {
-                margin-top: 120px;
-            }
-            .save-bottom button {
-                font-size: 14px;
-                padding: 8px 25px;
-            }
-        }
-        
-        /* ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ В ЛАНДШАФТЕ */
-        @media (max-width: 650px) and (orientation: landscape) {
-            .top-row {
-                margin-top: -60px;
-                gap: 15px;
-            }
-            .bottom-row {
-                margin-bottom: -130px;
-                gap: 15px;
-            }
-            .field-group {
-                width: 120px;
-            }
-            .field-group input {
-                padding: 6px 4px;
-                font-size: 10px;
-            }
-            .save-bottom {
-                margin-top: 120px;
-            }
-            .save-bottom button {
-                font-size: 12px;
-                padding: 6px 20px;
             }
         }
         
