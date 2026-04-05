@@ -2,6 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>Гуляяять</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -65,34 +66,37 @@
             background-color: #1a1a2e;
             border-radius: 20px;
             width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
             min-height: 170vh;
-            padding: 80px 60px;
+            position: relative;
         }
         
+        /* ЖЁСТКАЯ ФИКСАЦИЯ ПОЛЕЙ - ОНИ НЕ ДВИГАЮТСЯ */
         .top-row {
+            position: absolute;
+            top: 12%;
+            left: 0;
+            right: 0;
             display: flex;
             justify-content: center;
             gap: 250px;
-            margin-bottom: auto;
-            margin-top: 90px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
         
         .bottom-row {
+            position: absolute;
+            bottom: 15%;
+            left: 0;
+            right: 0;
             display: flex;
             justify-content: center;
             gap: 250px;
-            margin-top: auto;
-            margin-bottom: 80px;
-            flex-wrap: wrap;
+            flex-wrap: nowrap;
         }
         
         .field-group {
             text-align: left;
             width: 250px;
+            flex-shrink: 0;
         }
         
         .field-group input {
@@ -106,8 +110,11 @@
         }
         
         .save-bottom {
+            position: absolute;
+            bottom: 5%;
+            left: 0;
+            right: 0;
             text-align: center;
-            margin-top: 50px;
         }
         
         .save-bottom button {
@@ -116,27 +123,32 @@
             padding: 16px 50px;
         }
         
+        /* ДЛЯ ТЕЛЕФОНОВ - МЕНЬШЕ ОТСТУПЫ И ПОЛЯ */
         @media (max-width: 1200px) {
-            .top-row, .bottom-row {
-                gap: 100px;
-            }
+            .top-row { gap: 150px; top: 10%; }
+            .bottom-row { gap: 150px; bottom: 12%; }
+            .field-group { width: 200px; }
         }
         
         @media (max-width: 900px) {
-            .top-row, .bottom-row {
-                gap: 50px;
-            }
-            .field-group {
-                width: 200px;
-            }
+            .top-row { gap: 80px; top: 8%; }
+            .bottom-row { gap: 80px; bottom: 10%; }
+            .field-group { width: 170px; }
+            .field-group input { padding: 10px 8px; font-size: 14px; }
         }
         
-        @media (max-width: 768px) {
-            .top-row, .bottom-row {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-            }
+        @media (max-width: 700px) {
+            .top-row { gap: 40px; top: 5%; }
+            .bottom-row { gap: 40px; bottom: 8%; }
+            .field-group { width: 140px; }
+            .field-group input { padding: 8px 5px; font-size: 12px; }
+        }
+        
+        @media (max-width: 550px) {
+            .top-row { gap: 20px; top: 3%; }
+            .bottom-row { gap: 20px; bottom: 5%; }
+            .field-group { width: 110px; }
+            .field-group input { padding: 6px 4px; font-size: 10px; }
         }
     </style>
 </head>
