@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #333;
+            padding: 20px;
+        }
+        
+        .page {
+            width: 100%;
+            max-width: 1900px;
+            text-align: center;
+        }
+        
+        .auth-box {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        
+        .form-box {
+            background: transparent;
+            padding: 0;
+            border-radius: 20px;
+            box-shadow: none;
+        }
+        
+        .auth-box input {
+            width: 100%;
+            padding: 12px;
+            margin: 15px 0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+        
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .hidden { display: none; }
+        
+        .city-bg {
+            background-image: url('фон.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: #1a1a2e;
+            border-radius: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 170vh;
+            padding: 80px 60px;
+        }
+        
+        .top-row {
+            display: flex;
+            justify-content: center;
+            gap: 250px;
+            margin-bottom: auto;
+            margin-top: 90px;
+            flex-wrap: wrap;
+        }
+        
+        .bottom-row {
+            display: flex;
+            justify-content: center;
+            gap: 250px;
+            margin-top: auto;
+            margin-bottom: 80px;
+            flex-wrap: wrap;
+        }
+        
+        .field-group {
+            text-align: left;
+            width: 250px;
+        }
+        
+        .field-group input {
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.95);
+            padding: 14px 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .save-bottom {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .save-bottom button {
+            background: #28a745;
+            font-size: 20px;
+            padding: 16px 50px;
+        }
+        
+        @media (max-width: 1200px) {
+            .top-row, .bottom-row {
+                gap: 100px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .top-row, .bottom-row {
+                gap: 50px;
+            }
+            .field-group {
+                width: 200px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-row, .bottom-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    
+    <div id="step1" class="auth-box">
+        <h2>Ваше имя</h2>
+        <input type="text" id="userName" placeholder="Имя">
+        <button onclick="enter()">Далее</button>
+    </div>
+
+    <div id="step2" class="form-box hidden">
+        <div class="city-bg">
+            
+            <div class="top-row">
+                <div class="field-group">
+                    <input type="text" id="field1" placeholder="Имя">
+                </div>
+                <div class="field-group">
+                    <input type="text" id="field2" placeholder="Имя">
+                </div>
+                <div class="field-group">
+                    <input type="text" id="field3" placeholder="Имя">
+                </div>
+            </div>
+            
+            <div class="bottom-row">
+                <div class="field-group">
+                    <input type="text" id="field4" placeholder="Имя">
+                </div>
+                <div class="field-group">
+                    <input type="text" id="field5" placeholder="Имя">
+                </div>
+                <div class="field-group">
+                    <input type="text" id="field6" placeholder="Имя">
+                </div>
+            </div>
+            
+            <div class="save-bottom">
+                <button onclick="saveText()">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function enter() {
+        let name = document.getElementById('userName').value.trim();
+        if (name === '') { 
+            alert('Введите ваше имя'); 
+            return; 
+        }
+        localStorage.setItem('userName', name);
+        
+        for (let i = 1; i <= 6; i++) {
+            let saved = localStorage.getItem('friends_' + name + '_field' + i);
+            if (saved) {
+                document.getElementById('field' + i).value = saved;
+            } else {
+                document.getElementById('field' + i).value = '';
+            }
+        }
+        
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+    }
+    
+    function saveText() {
+        let name = localStorage.getItem('userName');
+        if (!name) {
+            alert('Ошибка');
+            return;
+        }
+        for (let i = 1; i <= 6; i++) {
+            let text = document.getElementById('field' + i).value;
+            localStorage.setItem('friends_' + name + '_field' + i, text);
+        }
+        alert('Сохранено!');
+    }
+    
+    let oldName = localStorage.getItem('userName');
+    if (oldName && oldName !== '') {
+        document.getElementById('step1').classList.add('hidden');
+        document.getElementById('step2').classList.remove('hidden');
+        for (let i = 1; i <= 6; i++) {
+            let saved = localStorage.getItem('friends_' + oldName + '_field' + i);
+            if (saved) {
+                document.getElementById('field' + i).value = saved;
+            }
+        }
+    }
+</script>
+</body>
+</html>
