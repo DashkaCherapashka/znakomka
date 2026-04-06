@@ -117,7 +117,63 @@
             padding: 16px 50px;
         }
         
-        /* ТЕЛЕФОНЫ И ПЛАНШЕТЫ В ГОРИЗОНТАЛЬНОЙ ОРИЕНТАЦИИ - ТОЧНОЕ СООТВЕТСТВИЕ ПОЗИЦИЯМ */
+        /* ВЕРТИКАЛЬНАЯ ОРИЕНТАЦИЯ ТЕЛЕФОНА - ПОЛЯ КАК НА КОМПЬЮТЕРЕ С МАСШТАБИРОВАНИЕМ */
+        @media (max-width: 900px) and (orientation: portrait) {
+            .city-bg {
+                min-height: auto;
+                padding: 5vh 5vw;
+            }
+            .top-row {
+                gap: 5vw;
+                margin-top: 8vh;
+                flex-wrap: nowrap;
+            }
+            .bottom-row {
+                gap: 5vw;
+                margin-bottom: 6vh;
+                flex-wrap: nowrap;
+            }
+            .field-group {
+                width: 28vw;
+                min-width: auto;
+            }
+            .field-group input {
+                padding: 2vh 1vw;
+                font-size: 2.2vh;
+            }
+            .save-bottom {
+                margin-top: 4vh;
+            }
+            .save-bottom button {
+                font-size: 2.2vh;
+                padding: 1.5vh 6vw;
+            }
+        }
+        
+        /* ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ ВЕРТИКАЛЬНО */
+        @media (max-width: 600px) and (orientation: portrait) {
+            .top-row {
+                gap: 3vw;
+                margin-top: 6vh;
+            }
+            .bottom-row {
+                gap: 3vw;
+                margin-bottom: 4vh;
+            }
+            .field-group {
+                width: 30vw;
+            }
+            .field-group input {
+                padding: 1.5vh 0.8vw;
+                font-size: 2vh;
+            }
+            .save-bottom button {
+                font-size: 2vh;
+                padding: 1.2vh 5vw;
+            }
+        }
+        
+        /* ТЕЛЕФОНЫ И ПЛАНШЕТЫ В ГОРИЗОНТАЛЬНОЙ ОРИЕНТАЦИИ */
         @media (max-width: 1200px) and (orientation: landscape) {
             body {
                 padding: 0;
@@ -185,33 +241,6 @@
             .save-bottom button {
                 font-size: 1.8vh;
                 padding: 1.2vh 3vw;
-            }
-        }
-        
-        /* ДЛЯ ТЕЛЕФОНОВ В ВЕРТИКАЛЬНОЙ ОРИЕНТАЦИИ - ОСТАЕТСЯ КАК БЫЛО */
-        @media (max-width: 900px) and (orientation: portrait) {
-            .top-row, .bottom-row {
-                gap: 50px;
-            }
-            .field-group {
-                width: 200px;
-            }
-        }
-        
-        @media (max-width: 768px) and (orientation: portrait) {
-            .top-row, .bottom-row {
-                flex-direction: column;
-                align-items: center;
-                gap: 30px;
-            }
-            .top-row {
-                margin-top: 50px;
-            }
-            .bottom-row {
-                margin-bottom: 50px;
-            }
-            .field-group {
-                width: 250px;
             }
         }
         
